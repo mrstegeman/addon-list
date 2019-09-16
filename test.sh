@@ -1,8 +1,14 @@
 #!/bin/bash
 
 set -e -x
-    
-CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
+
+COMMIT_RANGE=$(python -c \
+    "import json, os; \
+    data = json.loads(open(os.environ['GITHUB_EVENT_PATH']).read()); \
+    print('{}..{}'.format(data['before'], data['after']))")
+
+echo "$COMMIT_RANGE"
+CHANGED_FILES=($(git diff --name-only $COMMIT_RANGE))
 ADDONS_CHANGED=
 SCHEMA_CHANGED=0
 CHECKER_CHANGED=0
