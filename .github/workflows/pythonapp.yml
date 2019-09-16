@@ -23,4 +23,9 @@ jobs:
         pip install jsonschema
     - name: Test list changes
       run: |
+        echo $GITHUB_REPOSITORY
+        echo $GITHUB_SHA
+        echo $GITHUB_REF
+        echo $GITHUB_HEAD_REF
+        echo $GITHUB_BASE_REF
         ./test.sh

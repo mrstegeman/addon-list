@@ -2,6 +2,7 @@
 
 set -e -x
 
+cat "${GITHUB_EVENT_PATH}"
 COMMIT_RANGE=$(python -c \
     "import json, os; \
     data = json.loads(open(os.environ['GITHUB_EVENT_PATH']).read()); \
