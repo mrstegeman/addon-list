@@ -2,7 +2,7 @@
 
 set -e -x
     
-CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
+CHANGED_FILES=($(git diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)))
 ADDONS_CHANGED=
 SCHEMA_CHANGED=0
 CHECKER_CHANGED=0
