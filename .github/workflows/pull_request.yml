@@ -20,4 +20,4 @@ jobs:
         pip install jsonschema
     - name: Check changes
       run: |
-        ./test.sh
+        ./test-pr.py
